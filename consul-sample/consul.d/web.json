@@ -1,0 +1,7 @@
+{ "services": [
+    { "id": "web1", "name": "web", "tags": ["primary"], "port": 8081
+    }, 
+    { "id": "web2", "name": "web", "tags": ["secondary"], "port": 8082
+    }
+  ]
+} 
