@@ -1,0 +1,3 @@
+logging.level.cz.net21.ttulka: DEBUG
+
+watcher.root: c:\Develop\test\filewatcher
