@@ -1,0 +1,5 @@
+module:
+  name: my-test-name
+  value: my-test-value
+
+test.name: my-simple-test
