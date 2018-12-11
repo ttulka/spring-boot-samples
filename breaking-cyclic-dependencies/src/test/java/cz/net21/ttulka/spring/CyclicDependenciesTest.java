@@ -16,7 +16,7 @@ public class CyclicDependenciesTest {
     @Test
     public void testContextLoads() {
         assertThat(this.ctx).isNotNull();
-        assertThat(this.ctx.containsBean("myBean1")).isTrue();
-        assertThat(this.ctx.containsBean("myBean2")).isTrue();
+        assertThat(this.ctx.containsBean("myBeanA")).isTrue();
+        assertThat(this.ctx.containsBean("myBeanB")).isTrue();
     }
 }

@@ -12,46 +12,46 @@ public class App {
     }
 
     @Bean
-    MyBean1 myBean1(MyBean2 myBean2) {
-        return new MyBean1(myBean2);
+    MyBeanA myBean1(MyBeanB myBeanB) {
+        return new MyBeanA(myBeanB);
     }
 
     @Bean
-    MyBean2 myBean2(MyBean1 myBean1) {
-        return new MyBean2(myBean1);
+    MyBeanB myBean2(MyBeanA myBeanA) {
+        return new MyBeanB(myBeanA);
     }
 }
 
-class MyBean1 {
+class MyBeanA {
 
-    private final MyBean2 myBean2;
+    private final MyBeanB myBeanB;
 
-    MyBean1(MyBean2 myBean2) {
-        this.myBean2 = myBean2;
+    MyBeanA(MyBeanB myBeanB) {
+        this.myBeanB = myBeanB;
     }
 
-    public void fn1a() {
-        System.out.println("fn1a");
+    public void fnA1() {
+        System.out.println("fnA1");
     }
 
-    public void fn1b() {
-        myBean2.fn2a();
+    public void fnA2() {
+        myBeanB.fnB1();
     }
 }
 
-class MyBean2 {
+class MyBeanB {
 
-    private final MyBean1 myBean1;
+    private final MyBeanA myBeanA;
 
-    MyBean2(MyBean1 myBean1) {
-        this.myBean1 = myBean1;
+    MyBeanB(MyBeanA myBeanA) {
+        this.myBeanA = myBeanA;
     }
 
-    public void fn2a() {
-        System.out.println("fn2a");
+    public void fnB1() {
+        System.out.println("fnB1");
     }
 
-    public void fn2b() {
-        myBean1.fn1a();
+    public void fnB2() {
+        myBeanA.fnA1();
     }
 }
