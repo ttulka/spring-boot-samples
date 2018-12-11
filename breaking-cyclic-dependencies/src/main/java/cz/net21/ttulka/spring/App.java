@@ -12,12 +12,12 @@ public class App {
     }
 
     @Bean
-    MyBeanA myBean1(MyBeanB myBeanB) {
+    MyBeanA myBeanA(MyBeanB myBeanB) {
         return new MyBeanA(myBeanB);
     }
 
     @Bean
-    MyBeanB myBean2(MyBeanA myBeanA) {
+    MyBeanB myBeanB(MyBeanA myBeanA) {
         return new MyBeanB(myBeanA);
     }
 }
