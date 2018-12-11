@@ -12,22 +12,30 @@ public class App {
     }
 
     @Bean
-    MyBeanA myBeanA(MyBeanB myBeanB) {
-        return new MyBeanA(myBeanB);
+    MyBeanA myBeanA(B1 b1) {
+        return new MyBeanA(b1);
     }
 
     @Bean
-    MyBeanB myBeanB(MyBeanA myBeanA) {
-        return new MyBeanB(myBeanA);
+    MyBeanB myBeanB(A1 a1) {
+        return new MyBeanB(a1);
     }
 }
 
-class MyBeanA {
+interface A1 {
+    void fnA1();
+}
 
-    private final MyBeanB myBeanB;
+interface B1 {
+    void fnB1();
+}
 
-    MyBeanA(MyBeanB myBeanB) {
-        this.myBeanB = myBeanB;
+class MyBeanA implements A1 {
+
+    private final B1 b1;
+
+    MyBeanA(B1 b1) {
+        this.b1 = b1;
     }
 
     public void fnA1() {
@@ -35,16 +43,16 @@ class MyBeanA {
     }
 
     public void fnA2() {
-        myBeanB.fnB1();
+        b1.fnB1();
     }
 }
 
-class MyBeanB {
+class MyBeanB implements B1 {
 
-    private final MyBeanA myBeanA;
+    private final A1 a1;
 
-    MyBeanB(MyBeanA myBeanA) {
-        this.myBeanA = myBeanA;
+    MyBeanB(A1 a1) {
+        this.a1 = a1;
     }
 
     public void fnB1() {
@@ -52,6 +60,6 @@ class MyBeanB {
     }
 
     public void fnB2() {
-        myBeanA.fnA1();
+        a1.fnA1();
     }
 }
