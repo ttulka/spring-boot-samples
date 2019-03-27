@@ -12,6 +12,7 @@
         <module>parent</module>
         <module>app</module>
         <module>web1</module>
+        <module>web2</module>
     </modules>
 
 </project>
