@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="webidx/fragments/layout :: layout (~{::body})">
+<body>
+
+<h1 th:text="#{webidx.title}">Web</h1>
+
+<p>Logged user: <span sec:authentication="name">N/A</span></p>
+
+<ul>
+    <li th:each="path : ${paths}">
+        <a th:with="msgKey=${path.replace(pathRoot,'').replace('/','')}"
+           th:href="${path}"
+           th:text="#{'webidx.path.' + ${msgKey}}">Link</a>
+        <span th:if="${#authorization.url(path)}">authorized</span>
+    </li>
+</ul>
+
+<p>Template webidx</p>
+
+</body>
+</html>

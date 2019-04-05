@@ -1,0 +1,25 @@
+body {
+    font-family: sans-serif;
+    padding: 2em;
+    font-size: 2em;
+    background-color: gray;
+}
+
+#globmenu {
+    background-color: blue;
+    padding: 0.1em 0;
+}
+
+#globmenu ul {
+    list-style-type: none;
+}
+
+#globmenu li {
+    display: inline;
+}
+
+#globmenu a {
+    color: white;
+    padding: 0 0.5em;
+    display: inline-block;
+}

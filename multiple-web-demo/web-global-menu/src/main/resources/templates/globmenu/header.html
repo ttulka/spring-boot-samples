@@ -1,0 +1,9 @@
+<div th:fragment="header" id="globmenu">
+    <ul>
+        <li th:each="path : ${paths}">
+            <a th:with="msgKey=${path.replace(pathRoot,'').replace('/','')}"
+               th:href="${path}"
+               th:text="#{'globmenu.path.' + ${msgKey}}">Link</a>
+        </li>
+    </ul>
+</div>

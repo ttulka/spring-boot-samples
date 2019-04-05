@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.example.samples.webres.Config, \
+  com.example.samples.webres.StaticResourcesConfig

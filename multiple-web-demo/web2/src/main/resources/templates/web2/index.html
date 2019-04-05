@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="web2/fragments/layout :: layout (~{::body})">
+<body>
+
+<h1 th:text="#{web2.title}">Web</h1>
+
+<form th:action="@{echo}" method="post">
+    <input placeholder="Your text" th:id="input" th:name="input"/>
+    <button type="submit">Echo</button>
+</form>
+
+<p>Template web2</p>
+
+</body>
+</html>

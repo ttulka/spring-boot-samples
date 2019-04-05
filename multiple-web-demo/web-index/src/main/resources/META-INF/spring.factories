@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.example.samples.webidx.Config,\
+    com.example.samples.webidx.GlobalWebProperties

@@ -1,0 +1,24 @@
+<html th:fragment="layout (template)">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+
+    <title th:text="#{web1.title}">Web</title>
+
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/favicon.png}">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body onload="document.getElementById('homeLink').href = window.location.pathname.substring(0, window.location.pathname.indexOf('/', 1) + 1) || '/'">
+
+<div th:replace="global/header :: header"></div>
+
+<div>
+    <a id="homeLink" href="/">Home</a>
+</div>
+
+<div class="container-main">
+    <th:block th:include="${template}"/>
+</div>
+
+</body>
+</html>
