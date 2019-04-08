@@ -5,6 +5,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +36,9 @@ public class Config {
     @RequiredArgsConstructor
     @Controller("web1IndexController")
     static class IndexController {
+        
         @GetMapping
+        @PreAuthorize("hasAnyRole('ARCHIVEADMIN','SECURITYADMIN')")
         public String index() {
             log.debug("INDEX WEB1");
             return "web1/index";
@@ -47,7 +50,9 @@ public class Config {
     @RequiredArgsConstructor
     @Controller("web1EchoController")
     static class EchoController {
+    
         @PostMapping
+        @PreAuthorize("hasAnyRole('ARCHIVEADMIN','SECURITYADMIN')")
         public String echo(String input, Model model) {
             log.debug("ECHO WEB1: {}", input);
             model.addAttribute("output", String.join("1", input.split("")));

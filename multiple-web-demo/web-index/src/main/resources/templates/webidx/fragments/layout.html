@@ -1,18 +1,9 @@
-<html th:fragment="layout (template)">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{global/layout}">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta charset="utf-8">
-
     <title th:text="#{webidx.title}">Web</title>
-
-    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/favicon.png}">
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
-
-<div class="container-main">
-    <th:block th:include="${template}"/>
-</div>
 
 </body>
 </html>

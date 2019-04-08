@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- Built with https://ultraq.github.io/thymeleaf-layout-dialect/ -->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+
+    <title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">Demo</title>
+
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/favicon.png}">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<header layout:fragment="global-header">
+    <div th:replace="global/header :: header"></div>
+</header>
+
+<nav layout:fragment="header">
+    <p>--- global navigation header ---</p>
+</nav>
+
+<main layout:fragment="content" class="container-main">
+    <p>Page content goes here</p>
+</main>
+
+<footer layout:fragment="footer">
+    <p>--- global footer ---</p>
+</footer>
+
+</body>
+</html>

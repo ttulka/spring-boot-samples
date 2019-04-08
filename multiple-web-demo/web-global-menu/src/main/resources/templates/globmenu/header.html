@@ -1,9 +1,17 @@
-<div th:fragment="header" id="globmenu">
+<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+     th:fragment="header" id="globmenu">
     <ul>
         <li th:each="path : ${paths}">
-            <a th:with="msgKey=${path.replace(pathRoot,'').replace('/','')}"
-               th:href="${path}"
-               th:text="#{'globmenu.path.' + ${msgKey}}">Link</a>
+            <span th:with="msgKey=${path.replace(pathRoot,'').replace('/','')}">
+
+                <a sec:authorize="hasRole('ARCHIVEADMIN')"
+                   th:href="${path}"
+                   th:text="#{'globmenu.path.' + ${msgKey}}">Link</a>
+
+                <span sec:authorize="!hasRole('ARCHIVEADMIN')" class="disabled"
+                      th:text="#{'globmenu.path.' + ${msgKey}}">Link</span>
+
+            </span>
         </li>
     </ul>
 </div>

@@ -14,9 +14,8 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -70,6 +69,7 @@ public class MultipleThymeleafUIs {
     }
 
     @EnableWebSecurity
+    @EnableGlobalMethodSecurity(prePostEnabled = true)
     static class SecurityConfig {
         @Bean
         public UserDetailsService userDetailsService() {
@@ -82,21 +82,6 @@ public class MultipleThymeleafUIs {
                             .roles("ARCHIVEREADER")
                             .password("{bcrypt}$2a$10$v.iz86Wsg80nFZKclezXQek3arWlHvd4Bao.zK6ZT9SwgSEskLKO2")
                             .build())));
-        }
-
-        @Configuration
-        public static class AuthorizationConfig extends WebSecurityConfigurerAdapter {
-            @Override
-            protected void configure(HttpSecurity http) throws Exception {
-                http
-                        .authorizeRequests()
-                        .antMatchers("/ui/web2/**").hasRole("ARCHIVEADMIN")
-                        .and()
-                        .authorizeRequests()
-                        .anyRequest().authenticated()
-                        .and()
-                        .formLogin();
-            }
         }
     }
 }

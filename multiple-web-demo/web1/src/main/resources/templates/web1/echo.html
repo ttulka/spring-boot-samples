@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="web1/fragments/layout :: layout (~{::body})">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{web1/fragments/layout}">
 <body>
 
-<h1 th:text="#{web1.title}">Web</h1>
+<main layout:fragment="content">
+    <h1 th:text="#{web1.title}">Web</h1>
 
-<p>ECHO: <strong th:text="${output}"></strong></p>
-
-<p>Template web1</p>
+    <p>ECHO: <strong th:text="${output}"></strong></p>
+</main>
 
 </body>
 </html>
