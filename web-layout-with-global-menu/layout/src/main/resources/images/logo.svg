@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="59.806858mm"
+   height="34.924999mm"
+   viewBox="0 0 59.806858 34.924999"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="drawing.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="31.236586"
+     inkscape:cy="-45.689145"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g3727"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-30.507153,-60.619992)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:-0.02116667px;word-spacing:-0.02116667px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="60.349949"
+       y="77.773811"
+       id="text3715"><tspan
+         sodipodi:role="line"
+         id="tspan3713"
+         x="57.439529"
+         y="77.773811"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.57777786px;line-height:0;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:-5.82083321px;word-spacing:0px;text-anchor:middle;fill:#000080;stroke-width:0.26458332">sample</tspan><tspan
+         sodipodi:role="line"
+         x="59.556198"
+         y="91.002975"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.57777786px;line-height:0;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:-1.58749998px;word-spacing:0px;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan3717">app</tspan></text>
+  </g>
+  <g
+     id="g3727"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1 copy"
+     transform="translate(-30.507153,-60.619992)">
+    <text
+       id="text3725"
+       y="77.773811"
+       x="60.349949"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:-0.02116667px;word-spacing:-0.02116667px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.57777786px;line-height:0;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:-5.82083321px;word-spacing:0px;text-anchor:middle;fill:#0063db;fill-opacity:1;stroke-width:0.26458332"
+         y="77.773811"
+         x="57.439529"
+         id="tspan3721"
+         sodipodi:role="line">sample</tspan><tspan
+         id="tspan3723"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.57777786px;line-height:0;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:-1.58749998px;word-spacing:0px;text-anchor:middle;stroke-width:0.26458332"
+         y="91.002975"
+         x="59.556198"
+         sodipodi:role="line">app</tspan></text>
+  </g>
+</svg>

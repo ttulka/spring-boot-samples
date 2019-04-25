@@ -1,0 +1,55 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+
+    <title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">SampleApp</title>
+
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/favicon.png}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+</head>
+<body>
+
+<header layout:fragment="global-header">
+    <div th:replace="global/header :: header"></div>
+</header>
+
+<div layout:fragment="header">
+    <div id="header">
+        <nav layout:fragment="navigation">
+            <!-- global navigation header -->
+        </nav>
+        <span sec:authorize="isAuthenticated()" class="float-right">
+            <em id="username" sec:authentication="name">User</em> | <a id="logout" th:href="@{/logout}">logout</a>
+        </span>
+    </div>
+</div>
+
+<main layout:fragment="main">
+    <div th:if="${customError}" class="alert alert-danger errorlist" role="alert" id="customError">
+        <h4 th:text="#{__${customError.objectName}__.title}">Error</h4>
+        <div th:text="#{__${customError.objectName}__.text}"></div>
+    </div>
+
+    <div th:if="${customWarning}" class="alert alert-warning warninglist" role="alert" id="customWarning">
+        <h4 th:text="#{__${customWarning.objectName}__.title}">Warning</h4>
+        <div th:text="#{__${customWarning.objectName}__.text}"></div>
+    </div>
+
+    <div layout:fragment="content">
+        <!-- page content goes here -->
+    </div>
+</main>
+
+<footer layout:fragment="footer">
+    <p>&copy; Copyright <span th:text="${#dates.format(#dates.createNow(),'yyyy')}"></span> ttulka.com</p>
+</footer>
+
+
+<script th:src="@{/webjars/jquery/3.4.0/jquery.slim.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/layout.js}" type="text/javascript"></script>
+</body>
+</html>

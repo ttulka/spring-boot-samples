@@ -1,0 +1,3 @@
+ttulka.ui.web.path:
+  root: ui/
+  sample: ${ttulka.ui.web.path.root}sample/

@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.ttulka.sample.web.globmenu.Config,\
+    com.ttulka.sample.web.globmenu.GlobalWebProperties
