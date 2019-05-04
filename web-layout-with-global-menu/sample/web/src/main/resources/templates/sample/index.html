@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{sample/fragments/layout}">
+<body>
+
+<main layout:fragment="content">
+    <h1 th:text="#{sample.title}">Web</h1>
+
+    <p>Some text with a tooltip <img th:src="@{/images/tooltip.png}" class="tooltip-icon" data-toggle="tooltip" data-placement="top" title="Tooltip on top"/>
+    </p>
+
+    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
+
+</main>
+
+</body>
+</html>

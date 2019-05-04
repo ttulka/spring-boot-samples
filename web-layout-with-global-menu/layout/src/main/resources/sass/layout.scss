@@ -1,0 +1,109 @@
+$light-gray-color: #efefed;
+$light-blue-color: #055ed2;
+$font-color: #626262;
+
+/** see more https://getbootstrap.com/docs/4.0/getting-started/theming/ **/
+$primary: $light-blue-color;
+
+/** comes from dependencies **/
+@import "META-INF/resources/webjars/bootstrap/4.3.1/scss/bootstrap.scss";
+
+body {
+  font: 14px/1.5em 'FrutigerNextW02-Regular', sans-serif;
+  font-weight: normal;
+  color: $font-color;
+  letter-spacing: 0.01em;
+  background: #fff;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+footer {
+  background-color: $light-gray-color;
+  margin-top: 2em;
+  background-image: url("/images/logo.svg");
+  background-repeat: no-repeat;
+  background-size: 5em;
+  background-position: right 2em center;
+  padding: 0 2em;
+
+  p {
+    padding: 1.5em;
+  }
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 1em 2em
+}
+
+header {
+  text-align: right;
+  padding: 0.1em 2em 0.1em 0;
+  font-size: 0.8571em;
+  border-bottom: 1px solid #ededed;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0
+  }
+
+  li {
+    display: inline-block;
+    padding: 0 0.5em;
+  }
+
+  a {
+    color: #b1b1b1;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $light-blue-color;
+  }
+
+  .disabled {
+    color: #e4e4e4;
+  }
+}
+
+nav {
+  display: inline-block;
+}
+
+#header {
+  background: url('data:image/gif;base64,R0lGODlhCgAnAPcRAAAAAP////7+/v39/fz8/Pv7+/r6+vn5+fj4+Pf39/b29vX19fT09PLy8vHx8fDw8O/v7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABEALAAAAAAKACcAAAhsAAMIHEiwoMGDCBMqXMiwYUIBECNKnDhxgMWLGDNmJMCxo8cCIEOKNECypMkDKFOqRMCypcsEMGPKVECzps0FOHPqZMCzp8+fPxsIHUq0aFEHSJMqfcC0qdOnTyFInUq1qtWrWLNq3cq1a9aAADs=') repeat-x left bottom;
+  border: 1px solid #f3f3f3;
+  border-bottom-color: #e0e0e0;
+  border-right-color: #e0e0e0;
+  height: 3.1667em;
+  overflow: hidden;
+
+  a {
+    color: $font-color;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.8em;
+  }
+
+  a:hover {
+    color: black;
+  }
+}
+
+.light-gray-bg {
+  background: $light-gray-color;
+}
+
+.form-signin {
+  max-width: 300px;
+}
+
+.tooltip-icon {
+  width: 1em;
+  cursor: pointer;
+}

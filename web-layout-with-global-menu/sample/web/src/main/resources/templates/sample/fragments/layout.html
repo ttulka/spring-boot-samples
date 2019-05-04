@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{global/layout}">
+<head>
+    <title th:text="#{sample.title}">Web</title>
+</head>
+<body>
+
+<nav layout:fragment="navigation">
+    <a href="/" class="homeLink">Home</a>
+    <a href="http://www.example.com">Example Menu 1</a>
+    <a href="http://www.example.com">Example Menu 2</a>
+    <a href="http://www.example.com">Example Menu 3</a>
+</nav>
+
+</body>
+</html>

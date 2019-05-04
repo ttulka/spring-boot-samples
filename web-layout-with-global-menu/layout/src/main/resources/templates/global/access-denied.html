@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{global/layout}">
+<head>
+    <title th:text="#{access-denied.title}">Access Denied</title>
+</head>
+<body>
+
+<main layout:fragment="content">
+    <h1>Access Denied</h1>
+
+    <p><img src="/images/error.jpg" th:src="@{/images/error.jpg}"/></p>
+
+    <p>We're sorry, but you are not allowed to access this resource.</p>
+</main>
+
+</body>
+</html>

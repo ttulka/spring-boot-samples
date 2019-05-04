@@ -3,17 +3,22 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot-multiple-webs-web-global-menu</artifactId>
+    <artifactId>web-sample-global-menu</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <parent>
-        <groupId>com.example.samples</groupId>
-        <artifactId>spring-boot-multiple-webs-parent</artifactId>
+        <groupId>com.ttulka.sample.web</groupId>
+        <artifactId>web-sample-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>com.ttulka.sample.web</groupId>
+            <artifactId>web-sample-layout</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
@@ -40,12 +45,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
-    </licenses>
 
 </project>
