@@ -28,7 +28,7 @@ public class SampleApplication {
         }
 
         @Bean
-        public MappingJackson2XmlHttpMessageConverter mappingJackson2XmlHttpMessageConverter() {
+        MappingJackson2XmlHttpMessageConverter mappingJackson2XmlHttpMessageConverter() {
             return new MappingJackson2XmlHttpMessageConverter(
                     new Jackson2ObjectMapperBuilder().defaultUseWrapper(false).createXmlMapper(true).build()
             );
