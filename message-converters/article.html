@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Spring HTTP Message Converters Customizing</title>
+  <meta name="description" content="Exhausting manual how to customize message converting with Spring Boot and Spring MVC.">
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>Spring HTTP Message Converters Customizing</h1>
+
+<p>It's easy to expose a REST endpoint with Spring:</p>
+
+<pre>
+@RestController
+public class SampleController {
+
+    @GetMapping(path = "/data", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public SampleData sampleData() {
+        return new SampleData(new String[]{"sample1", "sample2"});
+    }
+}
+</pre>
+
+<p>Internally Spring converts the <code>SampleData</code> object using a <a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/converter/HttpMessageConverter.html" target="_blank"><code>HttpMessageConverter</code></a>.</p>
+
+<p>Spring brings a set of default converters and you can customize your own one. For instance, when the <code>SampleData</code> looks like:</p>
+<pre>
+@Data
+@AllArgsConstructor
+public class SampleData {
+
+    private String[] data;
+}
+</pre>
+<p>...the default XML conversion ends up with a following structure:</p>
+<pre>
+&lt;SampleData&gt;
+    &lt;data&gt;
+        &lt;data&gt;sample1&lt;/data&gt;
+        &lt;data&gt;sample2&lt;/data&gt;
+    &lt;/data&gt;
+&lt;/SampleData&gt;
+</pre>
+<p>But you may prefer a different structure:</p>
+<pre>
+&lt;SampleData&gt;
+    &lt;data&gt;sample1&lt;/data&gt;
+    &lt;data&gt;sample2&lt;/data&gt;
+&lt;/SampleData&gt;
+</pre>
+<p>To achieve this with Spring Boot (you need <a href="https://search.maven.org/artifact/org.springframework.boot/spring-boot-starter-web/2.1.4.RELEASE/jar" target="_blank"><code>spring-boot-starter-web</code></a> dependency and <a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/EnableAutoConfiguration.html" target="_blank"><code>@EnableAutoConfiguration</code></a> annotation on your application configuration), you have just to register a converter bean:</p>
+<pre>
+@Bean
+public MappingJackson2XmlHttpMessageConverter mappingJackson2XmlHttpMessageConverter() {
+    return new MappingJackson2XmlHttpMessageConverter(
+        new Jackson2ObjectMapperBuilder().defaultUseWrapper(false).createXmlMapper(true).build()
+    );
+}
+</pre>
+<p>We could end here as things are so easy with Spring Boot - the converter is registered and used in the needed order automatically.</p>
+
+<p>As a note it is worth to mention another option to customize message converters with Spring Boot - a <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/WebMvcConfigurer.html" target="_blank"><code>WebMvcConfigurer</code></a> configuration. The interface comes actually from Spring MVC, but its usage from within a Spring Boot application has some specifics:</p>
+<pre>
+@Configuration
+class Config implements WebMvcConfigurer {
+
+    @Override
+    public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) {
+        converters.add(0, new MappingJackson2XmlHttpMessageConverter(
+            new Jackson2ObjectMapperBuilder().defaultUseWrapper(false).createXmlMapper(true).build()
+        ));
+    }
+}
+</pre>
+<p>Spring Boot web auto-configuration (concretely <a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.html" target="_blank"><code>WebMvcAutoConfiguration</code></a>) brings a default configurer which means we can register as many custom configurers we want to without danger to overwrite the default configuration. That's why we can overwrite the <code>configureMessageConverters</code> method without losing the default message converters, but we have to put it at the beginning of the list to take over from the already included defaults (by converting the fist applicable converter will be used).</p>   
+
+<h2>The Life without Spring Boot</h2>
+<p>If we have to stick with Spring MVC only, to register a converter bean is just no more enough.</p>
+
+<p>One option is to use your own <code>WebMvcConfigurer</code> as we already seen above. But the situation without Spring Boot is slightly different: Spring MVC default web configuration (enabled by annotating a configuration with <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html" target="_blank"><code>@EnableWebMvc</code></a>) collects instances of <code>WebMvcConfigurer</code> into a composite where all the converters live in a common list. This means, overwriting the <code>configureMessageConverters</code>method would remove the default converters which is, usually, undesirable. Here, the <code></code> method will do the job (again, you have to put the custom converter at the beginning of the list):</a></p>
+<pre>
+@Configuration
+class MessageConvertersConfig implements WebMvcConfigurer {
+
+    @Override
+    public void extendMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) {
+        converters.add(0, new MappingJackson2XmlHttpMessageConverter(
+            new Jackson2ObjectMapperBuilder().defaultUseWrapper(false).createXmlMapper(true).build()
+        ));
+    }
+}
+</pre>
+
+<p>Another options is to overwrite the entire configuration (assumes removing <code>@EnableWebMvc</code> from your codebase). This is very similar to the previous solution:</p>
+<pre>
+@Configuration
+class WebConfig extends WebMvcConfigurationSupport {
+
+    @Override
+    protected void extendMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) {
+        converters.add(0, new MappingJackson2XmlHttpMessageConverter(
+            new Jackson2ObjectMapperBuilder().defaultUseWrapper(false).createXmlMapper(true).build()
+        ));
+    }
+}
+</pre>
+
+<p>As you can see, there is more to be aware of when working without convenience of using Spring Boot, but it's still pretty straightforward.</p>
+
+<p>And that's it. I hope this helped a bit and wish you happy message converting!</p>  
+
+<p>You can find working examples on <a href="https://github.com/ttulka/spring-boot-samples/tree/master/message-converters">my Github</a>.</p>
+
+</body>
+</html>
