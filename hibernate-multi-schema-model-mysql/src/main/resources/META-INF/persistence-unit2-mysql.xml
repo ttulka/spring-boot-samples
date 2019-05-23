@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence https://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="unit2" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<mapping-file>META-INF/orm-unit2.xml</mapping-file>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<shared-cache-mode>NONE</shared-cache-mode>
+		<validation-mode>AUTO</validation-mode>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+		</properties>
+
+		<class>com.ttulka.samples.jpa.spring.hibernate.model2.SampleEntity2</class>
+	</persistence-unit>
+</persistence>
