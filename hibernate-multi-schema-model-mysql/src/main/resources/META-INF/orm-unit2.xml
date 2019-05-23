@@ -2,7 +2,7 @@
 <entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm">
     <persistence-unit-metadata>
         <persistence-unit-defaults>
-            <schema>schema2</schema>
+            <catalog>schema2</catalog>
         </persistence-unit-defaults>
     </persistence-unit-metadata>
 </entity-mappings>

@@ -8,7 +8,6 @@
 		<validation-mode>AUTO</validation-mode>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-			<property name="hibernate.default_schema" value="schema1"/>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 		</properties>
 
