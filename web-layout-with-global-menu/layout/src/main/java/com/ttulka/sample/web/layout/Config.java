@@ -57,6 +57,15 @@ public class Config {
             model.addAttribute("layoutHeaderTemplate", this.template.getLocation());
         }
     }
+    
+    @ControllerAdvice(basePackages = {"com.ttulka.sample.web"})
+    static class ControllerSettings {
+
+        @InitBinder
+        public void initBinder(WebDataBinder binder) {
+            binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
+        }
+    }
 
     @ControllerAdvice(basePackages = {"com.ttulka.sample.web"})
     @Slf4j
