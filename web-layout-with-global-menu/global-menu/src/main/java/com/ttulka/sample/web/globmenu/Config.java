@@ -40,7 +40,7 @@ public class Config {
         return new LayoutTemplate("globmenu/header");
     }
 
-    @ControllerAdvice
+    @ControllerAdvice(basePackages = {"com.ttulka.sample.web"})
     static class PathsAdvice {
 
         private final String pathRoot;

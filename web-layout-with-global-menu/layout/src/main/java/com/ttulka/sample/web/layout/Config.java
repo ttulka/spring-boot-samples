@@ -43,7 +43,7 @@ public class Config {
         return new LayoutTemplate(DEFAULT_HEADER_TEMPLATE);
     }
 
-    @ControllerAdvice
+    @ControllerAdvice(basePackages = {"com.ttulka.sample.web"})
     static class LayoutHeaderTemplateAdvice {
 
         private final LayoutTemplate template;
@@ -58,7 +58,7 @@ public class Config {
         }
     }
 
-    @ControllerAdvice
+    @ControllerAdvice(basePackages = {"com.ttulka.sample.web"})
     @Slf4j
     static class GlobalExceptionHandler {
 
@@ -70,7 +70,7 @@ public class Config {
         }
     }
 
-    @ControllerAdvice
+    @ControllerAdvice(basePackages = {"com.ttulka.sample.web"})
     @Slf4j
     static class AccessDeniedExceptionHandler {
 
