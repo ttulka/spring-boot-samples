@@ -9,6 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -17,8 +18,8 @@ import org.springframework.util.StringUtils;
 @Configuration
 class Config {
 
-    @ConditionalOnMissingBean
     @Bean
+    @ConditionalOnMissingBean(name = AbstractApplicationContext.MESSAGE_SOURCE_BEAN_NAME)
     @Order(Ordered.LOWEST_PRECEDENCE - 10)
     public MessageSource messageSource(MessageSourceProperties properties, Collection<MessageSource> messageSources) {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
