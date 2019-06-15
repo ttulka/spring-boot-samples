@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Repository
 public interface TransactionEntries extends CrudRepository<TransactionEntries.TransactionEntry, String> {
 
-    Stream<TransactionEntry> findByAccountIban(String accountIban);
+    Stream<TransactionEntry> findBySenderIbanOrReceiverIban(String senderIban, String receiverIban);
 
     @Entity
     @AllArgsConstructor
@@ -26,10 +26,10 @@ public interface TransactionEntries extends CrudRepository<TransactionEntries.Tr
         @Column
         public String uuid;
         @Column
-        public String currency;
-        @Column
         public BigDecimal amount;
         @Column
-        public String accountIban;
+        public String senderIban;
+        @Column
+        public String receiverIban;
     }
 }

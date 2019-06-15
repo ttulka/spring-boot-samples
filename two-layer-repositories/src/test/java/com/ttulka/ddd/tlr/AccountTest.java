@@ -9,7 +9,6 @@ import com.ttulka.ddd.tlr.domain.Accounts;
 import com.ttulka.ddd.tlr.domain.Transactions;
 import com.ttulka.ddd.tlr.infrastructure.AccountEntries;
 import com.ttulka.ddd.tlr.infrastructure.PersistedAccount;
-import com.ttulka.ddd.tlr.infrastructure.PersistedAccounts;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,9 @@ public class AccountTest {
     }
 
     @Test
-    void openedAccount_shouldBeFoundByIban(@Autowired AccountEntries entries, @Autowired Transactions transactions) {
+    void openedAccount_shouldBeFoundByIban(
+            @Autowired AccountEntries entries,
+            @Autowired Accounts accounts, @Autowired Transactions transactions) {
         Account account = new PersistedAccount(
                 "LT601010012345678901",
                 "EUR",
@@ -50,14 +51,15 @@ public class AccountTest {
         );
         account.open();
 
-        Accounts accounts = new PersistedAccounts(entries, transactions);
         Optional<Account> persistentAccount = accounts.byIban("LT601010012345678901");
 
         assertTrue(persistentAccount.isPresent());
     }
 
     @Test
-    void openedAccountAttributes_shouldBeSet(@Autowired AccountEntries entries, @Autowired Transactions transactions) {
+    void openedAccountAttributes_shouldBePersisted(
+            @Autowired AccountEntries entries,
+            @Autowired Accounts accounts, @Autowired Transactions transactions) {
         Account account = new PersistedAccount(
                 "LT601010012345678901",
                 "EUR",
@@ -67,7 +69,6 @@ public class AccountTest {
         );
         account.open();
 
-        Accounts accounts = new PersistedAccounts(entries, transactions);
         Account persistentAccount = accounts.byIban("LT601010012345678901").get();
 
         assertAll(

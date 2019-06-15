@@ -30,36 +30,65 @@ public class Demo {
 
     @Transactional
     public void run() {
-        // open a new account
-        Account account = new PersistedAccount(
+        // open a couple of accounts
+        Account account1 = new PersistedAccount(
                 "LT601010012345678901",
                 "EUR",
                 000001,
                 accountEntries,
                 transactions
         );
-        account.open();
+        account1.open();
+
+        Account account2 = new PersistedAccount(
+                "LT601010012345678902",
+                "EUR",
+                000001,
+                accountEntries,
+                transactions
+        );
+        account2.open();
 
         // book a couple of transactions
         Transaction transaction1 = new PersistedTransaction(
                 "00001",
-                "EUR",
-                new BigDecimal(123),
-                account.iban(),
+                new BigDecimal(1000),
+                account1.iban(),
+                account2.iban(),
                 transactionEntries
         );
         transaction1.book();
+
         Transaction transaction2 = new PersistedTransaction(
                 "00002",
-                "EUR",
-                new BigDecimal(321),
-                account.iban(),
+                new BigDecimal(100),
+                account1.iban(),
+                account2.iban(),
                 transactionEntries
         );
         transaction2.book();
 
-        // print account details
-        accounts.byIban(account.iban()).ifPresent(a -> {
+        Transaction transaction3 = new PersistedTransaction(
+                "00003",
+                new BigDecimal(200),
+                account2.iban(),
+                account1.iban(),
+                transactionEntries
+        );
+        transaction3.book();
+
+        log.info("================================");
+        log.info("");
+
+        // fetch accounts
+        accounts.byIban("LT601010012345678901").ifPresent(a -> {
+            log.info("Account details:");
+            log.info("--------------------------------");
+            log.info(a.toString());
+            log.info("Balance: " + a.balance());
+            log.info("");
+        });
+        accounts.byIban("LT601010012345678902").ifPresent(a -> {
             log.info("Account details:");
             log.info("--------------------------------");
             log.info(a.toString());
@@ -67,8 +96,11 @@ public class Demo {
             log.info("");
         });
 
+        log.info("================================");
+        log.info("");
+
         // fetch transactions for the account
-        transactions.forAccount(account).forEach(t -> {
+        transactions.forAccount(account1).forEach(t -> {
             log.info("Transaction found:");
             log.info("--------------------------------");
             log.info(t.toString());

@@ -15,10 +15,10 @@ public final class PersistedTransactions implements Transactions {
 
     @Override
     public Stream<Transaction> forAccount(Account account) {
-        return entries.findByAccountIban(account.iban()).map(
-                entry -> new PersistedTransaction(
-                        entry.uuid, entry.currency, entry.amount, entry.accountIban, entries
-                )
-        );
+        return entries.findBySenderIbanOrReceiverIban(account.iban(), account.iban())
+                .map(entry -> new PersistedTransaction(
+                             entry.uuid, entry.amount, entry.senderIban, entry.receiverIban, entries
+                     )
+                );
     }
 }

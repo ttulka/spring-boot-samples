@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes = Config.class)
@@ -30,32 +31,47 @@ public class AccountTransactionsTest {
             @Autowired AccountEntries accountEntries,
             @Autowired TransactionEntries transactionEntries,
             @Autowired Transactions transactions) {
-        Account account = new PersistedAccount(
+        // open accounts
+        Account account1 = new PersistedAccount(
                 "LT601010012345678901",
                 "EUR",
                 000001,
                 accountEntries,
                 transactions
         );
-        account.open();
+        account1.open();
 
+        Account account2 = new PersistedAccount(
+                "LT601010012345678902",
+                "EUR",
+                000001,
+                accountEntries,
+                transactions
+        );
+        account2.open();
+
+        // book transactions
         Transaction transaction1 = new PersistedTransaction(
                 "00001",
-                "EUR",
-                BigDecimal.TEN,
+                new BigDecimal(100),
                 "LT601010012345678901",
+                "LT601010012345678902",
                 transactionEntries
         );
         transaction1.book();
+
         Transaction transaction2 = new PersistedTransaction(
                 "00002",
-                "EUR",
-                BigDecimal.TEN,
+                new BigDecimal(1),
+                "LT601010012345678902",
                 "LT601010012345678901",
                 transactionEntries
         );
         transaction2.book();
 
-        assertEquals(new Amount(new BigDecimal(20), "EUR"), account.balance());
+        assertAll(
+                () -> assertEquals(new Amount(new BigDecimal(-99), "EUR"), account1.balance()),
+                () -> assertEquals(new Amount(new BigDecimal(99), "EUR"), account2.balance())
+        );
     }
 }

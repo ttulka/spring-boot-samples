@@ -14,10 +14,6 @@ public final class Amount {
     private final BigDecimal value;
     private final String currency;
 
-    public BigDecimal value() {
-        return value;
-    }
-
     public Amount plus(Amount augend) {
         if (!currency.equals(augend.currency)) {
             throw new CurrenciesMishmashException();
