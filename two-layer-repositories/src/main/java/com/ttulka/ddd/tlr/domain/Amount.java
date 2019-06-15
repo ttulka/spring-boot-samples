@@ -2,6 +2,8 @@ package com.ttulka.ddd.tlr.domain;
 
 import java.math.BigDecimal;
 
+import com.ttulka.ddd.tlr.domain.ex.CurrenciesMishmashException;
+
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +20,7 @@ public final class Amount {
 
     public Amount plus(Amount augend) {
         if (!currency.equals(augend.currency)) {
-            throw new IllegalStateException("Currencies must be same.");
+            throw new CurrenciesMishmashException();
         }
         return new Amount(value.add(augend.value), currency);
     }
