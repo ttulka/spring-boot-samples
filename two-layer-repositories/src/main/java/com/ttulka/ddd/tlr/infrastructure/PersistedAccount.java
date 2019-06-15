@@ -33,7 +33,7 @@ public final class PersistedAccount implements Account {
         return transactions.forAccount(this)
                 .map(transaction -> transaction.amountFor(this))
                 .reduce(Amount::plus)
-                .orElse(new Amount(BigDecimal.ZERO, "EUR"));
+                .orElse(new Amount(BigDecimal.ZERO, currency));
     }
 
     @Override
