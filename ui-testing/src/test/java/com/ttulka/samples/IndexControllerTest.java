@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringJUnitConfig(classes = {ThymeleafAutoConfiguration.class, IndexController.class})
 @WebAppConfiguration
 @AutoConfigureMockMvc
-@ExtendWith(MockitoExtension.class)
+//@ExtendWith(MockitoExtension.class)
 class IndexControllerTest {
 
     @Autowired
