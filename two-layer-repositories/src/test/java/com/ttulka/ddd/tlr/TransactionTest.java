@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest(classes = Config.class)
 @EnableAutoConfiguration
 @Transactional
-public class TransactionTest {
+class TransactionTest {
 
     @Test
     void bookTransaction_shouldPersistEntity(@Autowired TransactionEntries entries) {

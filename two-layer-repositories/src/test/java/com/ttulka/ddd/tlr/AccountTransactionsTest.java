@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest(classes = Config.class)
 @EnableAutoConfiguration
 @Transactional
-public class AccountTransactionsTest {
+class AccountTransactionsTest {
 
     @Test
     void accountBalance_shouldBeCalculatedFromTransactions(

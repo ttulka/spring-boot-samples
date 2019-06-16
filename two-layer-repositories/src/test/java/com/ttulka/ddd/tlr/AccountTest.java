@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest(classes = Config.class)
 @EnableAutoConfiguration
 @Transactional
-public class AccountTest {
+class AccountTest {
 
     @Test
     void openAccount_shouldPersistEntity(@Autowired AccountEntries entries, @Autowired Transactions transactions) {

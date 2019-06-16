@@ -2,7 +2,7 @@ package com.ttulka.ddd.tlr.domain;
 
 import java.math.BigDecimal;
 
-import com.ttulka.ddd.tlr.domain.ex.CurrenciesMishmashException;
+import com.ttulka.ddd.tlr.domain.ex.CurrencyMishmashException;
 
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ public final class Amount {
 
     public Amount plus(Amount augend) {
         if (!currency.equals(augend.currency)) {
-            throw new CurrenciesMishmashException();
+            throw new CurrencyMishmashException();
         }
         return new Amount(value.add(augend.value), currency);
     }
