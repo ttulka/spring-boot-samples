@@ -2,13 +2,9 @@ package com.ttulka.ddd.tlr.domain;
 
 public interface Account {
 
-    String iban();
-
-    String currency();
-
     Amount balance();
 
-    boolean isOwnedBy(int customer);
+    boolean isOwnedBy(int customerId);
 
     void open();
 }

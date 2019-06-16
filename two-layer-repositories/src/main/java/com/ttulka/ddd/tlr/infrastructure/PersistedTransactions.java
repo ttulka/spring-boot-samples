@@ -2,7 +2,6 @@ package com.ttulka.ddd.tlr.infrastructure;
 
 import java.util.stream.Stream;
 
-import com.ttulka.ddd.tlr.domain.Account;
 import com.ttulka.ddd.tlr.domain.Transaction;
 import com.ttulka.ddd.tlr.domain.Transactions;
 
@@ -14,10 +13,10 @@ public final class PersistedTransactions implements Transactions {
     private final TransactionEntries entries;
 
     @Override
-    public Stream<Transaction> forAccount(Account account) {
-        return entries.findBySenderIbanOrReceiverIban(account.iban(), account.iban())
+    public Stream<Transaction> forAccount(String accountIban) {
+        return entries.findBySenderIbanOrReceiverIban(accountIban, accountIban)
                 .map(entry -> new PersistedTransaction(
-                             entry.uuid, entry.amount, entry.senderIban, entry.receiverIban, entries
+                             entry.uuid, entry.amount, entry.currency, entry.senderIban, entry.receiverIban, entries
                      )
                 );
     }

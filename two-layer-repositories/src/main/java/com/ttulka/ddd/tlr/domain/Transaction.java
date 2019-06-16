@@ -2,7 +2,7 @@ package com.ttulka.ddd.tlr.domain;
 
 public interface Transaction {
 
-    Amount amountFor(Account account);
+    Amount amountFor(String accountIban);
 
     void book();
 }

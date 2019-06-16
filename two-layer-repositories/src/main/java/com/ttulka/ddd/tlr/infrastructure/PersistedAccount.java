@@ -19,26 +19,16 @@ public final class PersistedAccount implements Account {
     private final Transactions transactions;
 
     @Override
-    public String iban() {
-        return iban;
-    }
-
-    @Override
-    public String currency() {
-        return currency;
-    }
-
-    @Override
     public Amount balance() {
-        return transactions.forAccount(this)
-                .map(transaction -> transaction.amountFor(this))
+        return transactions.forAccount(iban)
+                .map(transaction -> transaction.amountFor(iban))
                 .reduce(Amount::plus)
                 .orElse(new Amount(BigDecimal.ZERO, currency));
     }
 
     @Override
-    public boolean isOwnedBy(int customer) {
-        return ownerId == customer;
+    public boolean isOwnedBy(int customerId) {
+        return ownerId == customerId;
     }
 
     @Override

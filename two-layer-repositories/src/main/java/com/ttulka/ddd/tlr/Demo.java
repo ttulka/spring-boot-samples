@@ -53,8 +53,9 @@ public class Demo {
         Transaction transaction1 = new PersistedTransaction(
                 "00001",
                 new BigDecimal(1000),
-                account1.iban(),
-                account2.iban(),
+                "EUR",
+                "LT601010012345678901",
+                "LT601010012345678902",
                 transactionEntries
         );
         transaction1.book();
@@ -62,8 +63,9 @@ public class Demo {
         Transaction transaction2 = new PersistedTransaction(
                 "00002",
                 new BigDecimal(100),
-                account1.iban(),
-                account2.iban(),
+                "EUR",
+                "LT601010012345678901",
+                "LT601010012345678902",
                 transactionEntries
         );
         transaction2.book();
@@ -71,8 +73,9 @@ public class Demo {
         Transaction transaction3 = new PersistedTransaction(
                 "00003",
                 new BigDecimal(200),
-                account2.iban(),
-                account1.iban(),
+                "EUR",
+                "LT601010012345678902",
+                "LT601010012345678901",
                 transactionEntries
         );
         transaction3.book();
@@ -100,7 +103,7 @@ public class Demo {
         log.info("");
 
         // fetch transactions for the account
-        transactions.forAccount(account1).forEach(t -> {
+        transactions.forAccount("LT601010012345678901").forEach(t -> {
             log.info("Transaction found:");
             log.info("--------------------------------");
             log.info(t.toString());

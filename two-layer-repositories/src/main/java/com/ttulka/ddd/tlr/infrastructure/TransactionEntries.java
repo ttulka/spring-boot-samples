@@ -28,6 +28,8 @@ public interface TransactionEntries extends CrudRepository<TransactionEntries.Tr
         @Column
         public BigDecimal amount;
         @Column
+        public String currency;
+        @Column
         public String senderIban;
         @Column
         public String receiverIban;
