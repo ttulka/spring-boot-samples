@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.ttulka.samples.springboot.propsfromdb.util.PropsUtilAutoConfiguration
+
+org.springframework.boot.env.EnvironmentPostProcessor=\
+    com.ttulka.samples.springboot.propsfromdb.util.ConfigurationPropertiesFromDatabasePostProcessor
