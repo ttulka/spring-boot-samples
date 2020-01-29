@@ -34,7 +34,7 @@ public class Properties {
         }
     }
 
-    public void update(String name, Object value) {
+    public void store(String name, Object value) {
         if (jdbcTemplate.queryForObject("SELECT COUNT(*) FROM " + tableName + " WHERE name = ?",
                                         new Object[]{name}, Integer.class) > 0) {
             jdbcTemplate.update("UPDATE " + tableName + " SET value = ? WHERE name = ?", value, name);

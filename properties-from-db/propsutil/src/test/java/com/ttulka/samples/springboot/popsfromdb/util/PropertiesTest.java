@@ -32,7 +32,7 @@ class PropertiesTest {
 
     @Test
     void property_is_found_after_added() {
-        properties.update("test", "test_value");
+        properties.store("test", "test_value");
 
         Optional<Property> found = properties.byName("test");
 
@@ -49,8 +49,8 @@ class PropertiesTest {
 
     @Test
     void property_is_updated() {
-        properties.update("test", "test_value");
-        properties.update("test", "test_value_updated");
+        properties.store("test", "test_value");
+        properties.store("test", "test_value_updated");
 
         Optional<Property> found = properties.byName("test");
 
@@ -60,9 +60,9 @@ class PropertiesTest {
 
     @Test
     void all_added_properties_are_found() {
-        properties.update("test1", "test_value1");
-        properties.update("test2", "test_value2");
-        properties.update("test3", "test_value3");
+        properties.store("test1", "test_value1");
+        properties.store("test2", "test_value2");
+        properties.store("test3", "test_value3");
 
         Set<Property> found = properties.all();
 

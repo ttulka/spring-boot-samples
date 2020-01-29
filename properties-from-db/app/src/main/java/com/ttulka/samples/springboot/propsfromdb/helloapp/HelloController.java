@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/hello")
@@ -30,7 +29,7 @@ class HelloController {
     @PostMapping
     public ResponseEntity updateGreeting(@NonNull String greeting) {
         this.greeting = greeting;
-        this.properties.update("hello.greeting", greeting);
+        this.properties.store("hello.greeting", greeting);
 
         return new ResponseEntity(HttpStatus.CREATED);
     }
