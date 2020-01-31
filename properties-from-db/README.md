@@ -20,7 +20,7 @@ mvn spring-boot:run -f app\pom.xml
     ```
 2. Update the greeting
     ```
-    > curl http://localhost:8080/hello?greeting=Ahoy!
+    > curl http://localhost:8080/hello?greeting=Ahoy! -X PUT
     ```
 3. Check the updated greeting
     ```
