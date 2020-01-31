@@ -31,6 +31,6 @@ class HelloController {
         this.greeting = greeting;
         this.properties.store("hello.greeting", greeting);
 
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
