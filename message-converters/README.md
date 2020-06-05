@@ -3,12 +3,12 @@
 Source codes for the [post on medium.com](https://medium.com/@ttulka/spring-http-message-converters-customizing-770814eb2b55)
 
 ## Run the tests
-```sh
+```
 mvn clean test
 ```
 
 ## Run the application
-```sh
+```
 mvn spring-boot:run
 ```
 
