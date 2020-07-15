@@ -1,0 +1,4 @@
+spring:
+  flyway:
+#    locations: classpath:db/javamigration1/{vendor}
+    locations: classpath:db/javamigration2/{vendor}
