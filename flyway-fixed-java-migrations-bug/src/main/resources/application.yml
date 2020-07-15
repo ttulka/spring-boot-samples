@@ -1,4 +1,4 @@
 spring:
   flyway:
-#    locations: classpath:db/javamigration1/{vendor}
-    locations: classpath:db/javamigration2/{vendor}
+#    locations: classpath:db/migration1
+    locations: classpath:db/migration2

@@ -1,4 +1,4 @@
-package db.javamigration2.h2;
+package db.migration2;
 
 import org.flywaydb.core.api.migration.BaseJavaMigration;
 import org.flywaydb.core.api.migration.Context;

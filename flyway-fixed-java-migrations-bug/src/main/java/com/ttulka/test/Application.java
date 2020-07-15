@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootConfiguration
 @EnableAutoConfiguration
-@ComponentScan({"db.javamigration1", "db.javamigration2"})
+@ComponentScan({"db.migration1", "db.migration2"})
 public class Application {
 
     public static void main(String[] args) {
