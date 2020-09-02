@@ -1,0 +1,1 @@
+INSERT INTO mytest VALUES (0)

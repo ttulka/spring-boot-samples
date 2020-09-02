@@ -1,0 +1,1 @@
+CREATE TABLE mytest (val INTEGER PRIMARY KEY);
