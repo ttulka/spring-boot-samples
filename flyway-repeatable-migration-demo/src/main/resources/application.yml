@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:~/test/demodb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true

@@ -1,0 +1,7 @@
+myapp:
+  resourcewaiter:
+    enabled: false
+    some-value: abc123
+    network-resources:
+      - hostname: localhost
+        port: 123456

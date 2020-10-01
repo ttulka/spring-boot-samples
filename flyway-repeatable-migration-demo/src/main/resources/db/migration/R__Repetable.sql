@@ -1,0 +1,1 @@
+INSERT INTO mytest VALUES ('repetable1');
