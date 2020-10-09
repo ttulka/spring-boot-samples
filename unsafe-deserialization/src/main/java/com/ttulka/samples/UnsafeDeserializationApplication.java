@@ -1,5 +1,7 @@
 package com.ttulka.samples;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,16 +13,11 @@ import org.springframework.remoting.support.RemoteExporter;
 
 import lombok.Getter;
 import lombok.Setter;
+import sun.misc.ObjectInputFilter;
 
 @SpringBootApplication
 @EnableConfigurationProperties(UnsafeDeserializationApplication.DeserializationProperties.class)
 public class UnsafeDeserializationApplication {
-
-    // https://docs.oracle.com/javase/10/core/serialization-filtering1.htm
-    // TODO doesn't work here
-    static {
-        System.getProperties().setProperty("jdk.serialFilter", "com.ttulka.*;!*");
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(UnsafeDeserializationApplication.class, args);
@@ -38,6 +35,19 @@ public class UnsafeDeserializationApplication {
     @Bean
     SampleServiceImpl serviceRemoteImpl() {
         return new SampleServiceImpl();
+    }
+
+    @Autowired DeserializationProperties deserializationProperties;
+
+    @PostConstruct
+    void setupSerialFilter() {
+        if (deserializationProperties.isSafeDeserialization()) {
+            // https://docs.oracle.com/javase/10/core/serialization-filtering1.htm
+            ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("com.ttulka.*;!*");
+            ObjectInputFilter.Config.setSerialFilter(filter);
+        } else {
+            ObjectInputFilter.Config.setSerialFilter(null);
+        }
     }
 
     @Autowired DeserializationProperties properties;
