@@ -7,10 +7,8 @@ import com.ttulka.samples.UnsafeDeserializationApplication;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,61 +19,52 @@ class UnsafeDeserializationTest {
 
     private static final String SERVICE_URL = "http://localhost:8080/service/sample";
 
-    @SpringBootTest(properties = "acceptProxyClasses=true", classes = ClientConfig.class)
+    @SpringBootTest(properties = "acceptProxyClasses=true", classes = UnsafeDeserializationApplication.class,
+            webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
     @Nested
     class ProxyClassesAcceptedTest {
 
         @Test
-        void service_via_http_invoker(@Autowired SampleService service) {
-            assertThat(service.toString()).contains(SERVICE_URL);
-        }
+        void service_via_http_invoker() {
+            try (var ac = new AnnotationConfigApplicationContext(ClientConfig.class)) {
+                var service = ac.getBean(SampleService.class);
 
-        @Test
-        void service_responses_correctly(@Autowired SampleService service) {
-            ConfigurableApplicationContext ac = null;
-            try {
-                // run the application under test
-                ac = SpringApplication.run(UnsafeDeserializationApplication.class);
-
-                SampleResponse response = service.toUpperCase(new SampleRequest("abc"));
-
-                assertThat(response).isEqualTo(new SampleResponse("ABC"));
-
-            } finally {
-                if (ac != null) {
-                    ac.close();
-                }
+                assertThat(service.toString()).contains(SERVICE_URL);
             }
         }
 
         @Test
-        void deserialization_is_unsafe(@Autowired SampleService service) {
-            ConfigurableApplicationContext ac = null;
-            try {
-                // run the application under test
-                ac = SpringApplication.run(UnsafeDeserializationApplication.class);
+        void service_responses_correctly() {
+            try (var ac = new AnnotationConfigApplicationContext(ClientConfig.class)) {
+                var service = ac.getBean(SampleService.class);
 
                 SampleResponse response = service.toUpperCase(new SampleRequest("abc"));
 
                 assertThat(response).isEqualTo(new SampleResponse("ABC"));
-
-            } finally {
-                if (ac != null) {
-                    ac.close();
-                }
             }
+        }
 
-            // TODO
+        @Test
+        void deserialization_is_unsafe() {
+            try (var ac = new AnnotationConfigApplicationContext(ClientConfig.class)) {
+                var service = ac.getBean(SampleService.class);
+
+                // TODO
+            }
         }
     }
 
-//    @SpringBootTest(properties = "acceptProxyClasses=false", classes = ClientConfig.class)
+//    @SpringBootTest(properties = "acceptProxyClasses=true", classes = UnsafeDeserializationApplication.class,
+//            webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 //    @Nested
 //    class ProxyClassesNotAcceptedTest {
 //
 //        @Test
-//        void deserialization_is_safe(@Autowired SampleService service) {
-//            // TODO
+//        void deserialization_is_safe() {
+//            try (var ac = new AnnotationConfigApplicationContext(ClientConfig.class)) {
+//                var service = ac.getBean(SampleService.class);
+//                // TODO
+//            }
 //        }
 //    }
 
