@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @SpringBootApplication
-@EnableConfigurationProperties(UnsafeDeserializationApplication.UnsafeDeserializationProperties.class)
+@EnableConfigurationProperties(UnsafeDeserializationApplication.DeserializationProperties.class)
 public class UnsafeDeserializationApplication {
 
     public static void main(String[] args) {
@@ -20,14 +20,11 @@ public class UnsafeDeserializationApplication {
     }
 
     @Bean(name = "/service/sample")
-    RemoteExporter exporterServiceRemote(SampleService sampleService, UnsafeDeserializationProperties properties) {
+    RemoteExporter exporterServiceRemote(SampleService sampleService, DeserializationProperties properties) {
         HttpInvokerServiceExporter exporter = new HttpInvokerServiceExporter();
         exporter.setService(sampleService);
         exporter.setServiceInterface(SampleService.class);
-
-        // https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-2894, https://www.div0.sg/single-post/2017/06/17/CVE-2011-2894, https://seclists.org/fulldisclosure/2011/Sep/80
-        exporter.setAcceptProxyClasses(properties.isAcceptProxyClasses());
-
+        exporter.setAcceptProxyClasses(false);
         return exporter;
     }
 
@@ -39,8 +36,8 @@ public class UnsafeDeserializationApplication {
     @ConfigurationProperties
     @Getter
     @Setter
-    static class UnsafeDeserializationProperties {
+    static class DeserializationProperties {
 
-        private boolean acceptProxyClasses = false;
+        private boolean safeDeserialization = false;
     }
 }
