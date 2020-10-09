@@ -16,6 +16,7 @@ import lombok.Setter;
 @EnableConfigurationProperties(UnsafeDeserializationApplication.DeserializationProperties.class)
 public class UnsafeDeserializationApplication {
 
+    // https://docs.oracle.com/javase/10/core/serialization-filtering1.htm
     // TODO doesn't work here
     static {
         System.getProperties().setProperty("jdk.serialFilter", "com.ttulka.*;!*");
