@@ -22,39 +22,39 @@ class DeserializationTest {
 
     @SpringBootTest(properties = "safe-deserialization=true", webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
     @Nested
-    class UnsafeDeserializationTest {
-
-        @Test
-        void deserialization_is_unsafe(@LocalServerPort int port) {
-            given()
-                .port(port)
-                .contentType("application/x-java-serialized-object")
-                .body(this.getClass().getResourceAsStream("/beanutils1.ser")).
-            when()
-                .post(SERVICE_PATH).
-            then()
-                .statusCode(500);
-
-            assertThat(Files.exists(HACKED_FILE)).isTrue().as("Exploit was not successful");
-        }
-    }
-
-    @SpringBootTest(properties = "safe-deserialization=true", webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-    @Nested
     class SafeDeserializationTest {
 
         @Test
         void deserialization_is_safe(@LocalServerPort int port) {
             given()
-                .port(port)
-                .contentType("application/x-java-serialized-object")
-                .body(this.getClass().getResourceAsStream("/beanutils1.ser")).
-            when()
-                .post(SERVICE_PATH).
-            then()
-                .statusCode(500);
+                    .port(port)
+                    .contentType("application/x-java-serialized-object")
+                    .body(this.getClass().getResourceAsStream("/beanutils1.ser")).
+                    when()
+                    .post(SERVICE_PATH).
+                    then()
+                    .statusCode(500);
 
             assertThat(Files.exists(HACKED_FILE)).isFalse().as("Exploit was successful");
+        }
+    }
+
+    @SpringBootTest(properties = "safe-deserialization=false", webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+    @Nested
+    class UnsafeDeserializationTest {
+
+        @Test
+        void deserialization_is_unsafe(@LocalServerPort int port) {
+            given()
+                    .port(port)
+                    .contentType("application/x-java-serialized-object")
+                    .body(this.getClass().getResourceAsStream("/beanutils1.ser")).
+                    when()
+                    .post(SERVICE_PATH).
+                    then()
+                    .statusCode(500);
+
+            assertThat(Files.exists(HACKED_FILE)).isTrue().as("Exploit was not successful");
         }
     }
 

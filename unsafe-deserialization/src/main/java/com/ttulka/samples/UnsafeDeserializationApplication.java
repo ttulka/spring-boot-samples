@@ -45,8 +45,6 @@ public class UnsafeDeserializationApplication {
             // https://docs.oracle.com/javase/10/core/serialization-filtering1.htm
             ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("com.ttulka.*;!*");
             ObjectInputFilter.Config.setSerialFilter(filter);
-        } else {
-            ObjectInputFilter.Config.setSerialFilter(null);
         }
     }
 
