@@ -29,13 +29,13 @@ public class PostProcessingDemoApplication {
     static class MyBeanPostProcessor implements BeanPostProcessor {
         @Override
         public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-            System.out.println(this.getClass().getSimpleName() + " postProcessBeforeInitialization");
+            System.out.println(this.getClass().getSimpleName() + " postProcessBeforeInitialization " + beanName);
             return bean;
         }
 
         @Override
         public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-			System.out.println(this.getClass().getSimpleName() + " postProcessAfterInitialization");
+			System.out.println(this.getClass().getSimpleName() + " postProcessAfterInitialization " + beanName);
         	return bean;
         }
     }
