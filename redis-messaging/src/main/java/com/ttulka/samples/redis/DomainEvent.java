@@ -1,4 +1,6 @@
 package com.ttulka.samples.redis;
 
-public interface Event {
+import java.io.Serializable;
+
+public interface DomainEvent extends Serializable {
 }

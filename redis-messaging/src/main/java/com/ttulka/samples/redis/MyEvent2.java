@@ -1,17 +1,17 @@
 package com.ttulka.samples.redis;
 
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.Instant;
 
-@RequiredArgsConstructor
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = "eventId")
 @ToString
-public class MyEvent1 implements Event {
+public class MyEvent2 implements DomainEvent {
 
-    public final @NonNull Instant when;
-    public final @NonNull String eventId;
+    public @NonNull Instant when;
+    public @NonNull String eventId;
+    public @NonNull String info;
 }

@@ -1,16 +1,6 @@
-package com.ttulka.ecommerce.common.events;
+package com.ttulka.samples.redis;
 
-/**
- * Publisher for domain events.
- * <p>
- * Decouples the domain layer from the messaging implementation.
- */
 public interface EventPublisher {
 
-    /**
-     * Raises a domain event.
-     *
-     * @param event the domain event.
-     */
     void raise(DomainEvent event);
 }
