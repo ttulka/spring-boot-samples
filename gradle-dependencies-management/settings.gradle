@@ -1,0 +1,3 @@
+rootProject.name = 'gradle-dependencies-management'
+
+include 'parent', 'module1'
