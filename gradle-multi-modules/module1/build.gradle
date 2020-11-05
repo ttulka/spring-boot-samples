@@ -1,0 +1,19 @@
+plugins {
+    id 'application'
+}
+
+group 'com.ttulka.samples'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    implementation 'com.ttulka.samples:submodule1'
+    implementation 'com.ttulka.samples:submodule2'
+}
+
+application {
+    mainClass = 'com.ttulka.samples.module1.Application1'
+}
+
+repositories {
+    mavenCentral()
+}

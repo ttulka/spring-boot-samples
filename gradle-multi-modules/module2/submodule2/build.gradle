@@ -1,0 +1,10 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ttulka.samples'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}

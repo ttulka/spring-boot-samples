@@ -1,0 +1,17 @@
+task checkAll {
+    dependsOn ':module1:check'
+    dependsOn gradle.includedBuild('module2').task(':submodule1:check')
+    dependsOn gradle.includedBuild('module2').task(':submodule2:check')
+}
+
+task buildAll {
+    dependsOn ':module1:build'
+    dependsOn gradle.includedBuild('module2').task(':submodule1:build')
+    dependsOn gradle.includedBuild('module2').task(':submodule2:build')
+}
+
+task cleanAll {
+    dependsOn ':module1:clean'
+    dependsOn gradle.includedBuild('module2').task(':submodule1:clean')
+    dependsOn gradle.includedBuild('module2').task(':submodule2:clean')
+}
