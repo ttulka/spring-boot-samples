@@ -14,9 +14,10 @@ import lombok.RequiredArgsConstructor;
 class MyController1 {
 
     private final MyService myService;
+    private final String name;
 
     @GetMapping("${addons.addon1.url:/}")
     public String someString() {
-        return String.format("Returned from ADDON1: %s", myService.someString());
+        return String.format("Call from %s: %s", name, myService.someString());
     }
 }

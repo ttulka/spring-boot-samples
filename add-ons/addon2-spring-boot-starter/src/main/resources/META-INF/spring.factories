@@ -1,3 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.ttulka.samples.addons.addon2.Addon2Config,\
-  com.ttulka.samples.addons.addon2.MyController2
+  com.ttulka.samples.addons.addon2.Addon2Config
