@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ttulka.samples.addons</groupId>
+        <artifactId>addons-modules</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>addons-application</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ttulka.samples.addons</groupId>
+            <artifactId>addons-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-loader</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-executable-jar-format.html#executable-jar-property-launcher-features -->
+                <configuration>
+                    <!-- PropertiesLauncher to activate for the Fat Jar: -->
+                    <layout>ZIP</layout>
+                    <!-- PropertiesLauncher to activate for the spring-boot:run goal: -->
+<!--                    <mainClass>org.springframework.boot.loader.PropertiesLauncher</mainClass>-->
+<!--                    <systemPropertyVariables>-->
+<!--                        <loader.main>com.ttulka.samples.addons.Application</loader.main>-->
+<!--                    </systemPropertyVariables>-->
+                </configuration>
+                <executions><!-- Fat Jar to create -->
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
