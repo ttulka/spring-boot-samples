@@ -1,2 +1,7 @@
 addons:
   root-url: /myapp
+
+  # application properties have higher priority
+  # https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config
+  addon2:
+    name: ADD-ON-2-FROM-APPLICATION
