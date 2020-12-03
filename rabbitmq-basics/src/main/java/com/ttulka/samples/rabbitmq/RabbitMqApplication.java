@@ -28,6 +28,7 @@ public class RabbitMqApplication {
 
     static final String QUEUE_NAME = "mytest";
     static final String TOPIC_EXCHANGE_NAME = "mytest-exchange";
+    private static final String ROUTING_KEY = "test.events";
 
     public static void main(String[] args) {
         SpringApplication.run(RabbitMqApplication.class, args)
@@ -54,7 +55,7 @@ public class RabbitMqApplication {
         public void run() {
             for (int i = 0; i < 10; i++) {
                 rabbit.convertAndSend(
-                        TOPIC_EXCHANGE_NAME, "foo.bar.baz",
+                        TOPIC_EXCHANGE_NAME, ROUTING_KEY,
                         new MyMessage("Hello from RabbitMQ! " + (i + 1)));
             }
         }
@@ -72,7 +73,7 @@ public class RabbitMqApplication {
 
     @Bean
     Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
+        return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY);
     }
 
     @Bean
