@@ -76,11 +76,13 @@ public class RabbitMqApplication {
     }
 
     @Bean
-    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory) {
+    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         container.setQueueNames(QUEUE_NAME);
-        container.setMessageListener(msg -> System.out.println("Received: " + new String(msg.getBody())));
+        container.setMessageListener(msg -> {
+            System.out.println("Received: " + messageConverter.fromMessage(msg));
+        });
         return container;
     }
 
