@@ -12,7 +12,11 @@ mvn clean test
 mvn spring-boot:run
 ```
 
-Open in browser: `http://localhost:8080/data`
+Open `http://localhost:8080/data` in the browser or with cURL:
+
+```sh
+curl http://localhost:8080/data -H 'Accept: application/xml'
+```
 
 You see the following:
 ```xml
@@ -22,7 +26,7 @@ You see the following:
 </SampleData>
 ```
 
-In `SampleApplication.java` remove the bean definition `mappingJackson2XmlHttpMessageConverter` and rerun the application.
+In `SampleApplication.java` remove the bean definition `mappingJackson2XmlHttpMessageConverter` and restart the application.
 
 You see the following:
 ```xml
