@@ -1,6 +1,6 @@
 # Spring HTTP Message Converters Customizing
 
-Source codes for the [post on medium.com](https://medium.com/@ttulka/spring-http-message-converters-customizing-770814eb2b55)
+Source codes for [my blog post](https://blog.ttulka.com/spring-http-message-converters-customizing).
 
 ## Run the tests
 ```
