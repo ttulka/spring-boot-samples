@@ -25,6 +25,26 @@ public class MyService {
         myRepository.save(new MyEntity(null, "Test 2"));
     }
 
+    @Transactional
+    public void saveSomething() {
+        myRepository.save(new MyEntity(null, "Test A"));
+        sender.sendMessage("Saved!");
+        myRepository.save(new MyEntity(null, "Test B"));
+    }
+
+    @Transactional
+    public void updateSomething(Long id) {
+        for (var myEntity : myRepository.findAll()) {
+            myEntity.setValue(myEntity.getValue() + " --- updated");
+
+            sender.sendMessage("Updated! " + myEntity.getId());
+
+            if (true) throw new RuntimeException("Oops!");
+
+            //myRepository.save(myEntity); // not necessary in @Transactional
+        }
+    }
+
     public void printAll() {
         myRepository.findAll()
                 .forEach(System.out::println);

@@ -20,7 +20,16 @@ public class TransactionalMessagingApplication {
 				myService.doSomething();
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.err.println(e.getMessage());
+			}
+
+			myService.saveSomething();
+
+			try {
+				myService.updateSomething(1L);
+
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
 			}
 
 			myService.printAll();
