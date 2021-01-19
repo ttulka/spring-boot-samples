@@ -16,7 +16,13 @@ public class TransactionalMessagingApplication {
 	@Bean
 	public CommandLineRunner demo(MyService myService) {
 		return args -> {
-			myService.doSomething();
+			try {
+				myService.doSomething();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 			myService.printAll();
 		};
 	}
