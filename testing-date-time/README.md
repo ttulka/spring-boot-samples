@@ -1,4 +1,4 @@
-# Fixing the Clock with Spring Boot
+# Controlling the Clock with Spring Boot
 
 A demo project to show testing date and time with the mocked and fixed clock.
 
