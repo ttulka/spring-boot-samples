@@ -1,0 +1,11 @@
+package com.ttulka.samples.sender;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class MyMessage {
+
+  private String content;
+}
