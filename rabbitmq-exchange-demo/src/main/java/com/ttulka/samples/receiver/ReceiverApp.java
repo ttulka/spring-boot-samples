@@ -13,6 +13,5 @@ public class ReceiverApp implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-
 	}
 }

@@ -26,8 +26,6 @@ public class RabbitConfig {
 
   static final String MY_QUEUE_NAME = "my-queue-for-sender-service";
 
-  private static final String ALL = "*";
-
   private final ConnectionFactory connectionFactory;
 
   private final ObjectMapper objectMapper = new ObjectMapper();
@@ -65,7 +63,7 @@ public class RabbitConfig {
 
   private void setupQueues(Channel channel) throws IOException {
     setupQueue(channel, MY_QUEUE_NAME, MY_EXCHANGE_NAME,
-        binding(MyMessage.class, ALL));
+        binding(MyMessage.class, "*"));
   }
 
   private void setupQueue(Channel channel, String name, String exchangeName, BindingConfig... bindings) throws IOException {

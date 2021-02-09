@@ -1,5 +1,6 @@
 package com.ttulka.samples.sender;
 
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +20,7 @@ public class SenderApp implements CommandLineRunner {
 	public void run(String... args) {
 		for (int i = 1; i <= 10; i++) {
 			myMessageSender.send(MyMessage.builder()
-					.content("Hello, world! " + i)
+					.content(i + ": Hello, world! at " + LocalDateTime.now())
 					.build());
 		}
 	}
