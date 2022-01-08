@@ -1,0 +1,71 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://repo.spring.io/plugins-release' }
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'com.google.cloud.tools:jib-spring-boot-extension-gradle:0.1.0'
+    }
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.6.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'com.google.cloud.tools.jib' version '3.1.4'
+}
+
+group = 'com.ttulka.samples'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = '17'
+targetCompatibility = sourceCompatibility
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+jib {
+	from {
+		//image = "openjdk:17-jdk-slim"
+    	image = "gcr.io/distroless/java17"
+
+        platforms {
+            platform {
+                architecture = 'amd64'
+                os = 'linux'
+            }
+        }
+    }
+    to {
+        tags = ["latest"]
+    }
+    container {
+        ports = ["8080", "8080"]
+        user = "myuser:mygroup"
+    }
+    extraDirectories {
+        paths {
+            path {
+                from = 'src/main/jib'
+                into = '/'
+            }
+        }
+    }
+    pluginExtensions {
+        pluginExtension {
+            implementation = 'com.google.cloud.tools.jib.gradle.extension.springboot.JibSpringBootExtension'
+        }
+    }
+}
