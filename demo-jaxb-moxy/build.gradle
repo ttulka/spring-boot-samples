@@ -20,6 +20,10 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation 'org.eclipse.persistence:org.eclipse.persistence.moxy:3.0.2'
+	implementation 'jakarta.xml.bind:jakarta.xml.bind-api:3.0.1'
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

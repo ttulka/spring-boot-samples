@@ -1,31 +1,25 @@
-package de.inovex.rational.wa48.web.rest.dto.scriptexport;
-
-import java.io.Serializable;
-import java.util.List;
+package com.example.jaxbmoxy;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 import org.eclipse.persistence.oxm.annotations.XmlVariableNode;
 
-@XmlRootElement(name = "kprozesse")
-@XmlType(propOrder = { "structureVersion", "unlockedCookingProgramChainProcessIds", "unlockedCareRecipeChainProcessIds" })
-public class ChainProcessesXml implements Serializable {
+import java.io.Serializable;
+import java.util.List;
 
-    public static final String DEFAULT_FILE_NAME = "kprozesse.xml";
+@XmlRootElement(name = "myDocument")
+@XmlType(propOrder = { "structureVersion", "myObjects" })
+public class MyXml implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Integer structureVersion = 0;
+    private List<MyXmlObject> myObjects;
 
-    private List<OrderedChainProcessId> unlockedCookingProgramChainProcessIds;
-
-    private List<OrderedChainProcessId> unlockedCareRecipeChainProcessIds;
-
-    @XmlElement(name = "_1")
+    @XmlElement(name = "myVersion")
     public Integer getStructureVersion() {
         return structureVersion;
     }
@@ -34,25 +28,14 @@ public class ChainProcessesXml implements Serializable {
         this.structureVersion = structureVersion;
     }
 
-    @XmlElementWrapper(name = "_2")
-    @XmlVariableNode(value = "nodeName", type = CookingProgramChainProcessIdXmlAdapter.AdaptedOrderedChainCookingProgramId.class)
-    @XmlJavaTypeAdapter(CookingProgramChainProcessIdXmlAdapter.class)
-    public List<OrderedChainProcessId> getUnlockedCookingProgramChainProcessIds() {
-        return unlockedCookingProgramChainProcessIds;
+    @XmlElementWrapper(name = "myObjects")
+    @XmlVariableNode("nodeName")
+    @XmlJavaTypeAdapter(MyXmlObjectAdapter.class)
+    public List<MyXmlObject> getMyObjects() {
+        return myObjects;
     }
 
-    public void setUnlockedCookingProgramChainProcessIds(List<OrderedChainProcessId> unlockedCookingProgramChainProcessIds) {
-        this.unlockedCookingProgramChainProcessIds = unlockedCookingProgramChainProcessIds;
-    }
-
-    @XmlElementWrapper(name = "_3")
-    @XmlVariableNode(value = "nodeName", type = CareRecipeChainProcessIdXmlAdapter.AdaptedOrderedChainCareRecipeId.class)
-    @XmlJavaTypeAdapter(CareRecipeChainProcessIdXmlAdapter.class)
-    public List<OrderedChainProcessId> getUnlockedCareRecipeChainProcessIds() {
-        return unlockedCareRecipeChainProcessIds;
-    }
-
-    public void setUnlockedCareRecipeChainProcessIds(List<OrderedChainProcessId> unlockedCareRecipeChainProcessIds) {
-        this.unlockedCareRecipeChainProcessIds = unlockedCareRecipeChainProcessIds;
+    public void setMyObjects(List<MyXmlObject> myObjects) {
+        this.myObjects = myObjects;
     }
 }
