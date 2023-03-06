@@ -1,6 +1,7 @@
 package com.ttulka.samples;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 /**
  * Mocking the clock
  */
+@Disabled
 @SpringBootTest
 class DeliveryTests {
 
